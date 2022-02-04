@@ -12,10 +12,7 @@ const Form = ({onSubmit}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newMess = {
-            ...value
-        }
-        onSubmit(newMess);
+        onSubmit(value);
         setValue({text: ''})
     };
 

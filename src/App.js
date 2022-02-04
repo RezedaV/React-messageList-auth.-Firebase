@@ -2,17 +2,18 @@ import './App.css';
 import Message from "./Components/Message";
 import Form  from "./Components/Form";
 import {useState, useEffect} from "react";
+import {AUTHORS} from "./UTILS/constants";
 
 
 function App() {
     const [messageList, setMessageList] = useState([
-        {text:'Привет от автора', author: 'Резеда'},
-        {text:'Привет робота', author: 'Робот'},
-        {text:'Как дела', author: 'Резеда'}
+        {text:'Привет от автора', author: AUTHORS.ME},
+        {text:'Привет от робота', author: AUTHORS.BOT},
+        {text:'Как дела?', author: AUTHORS.ME}
     ])
 
-    const handleAddMessage = (newMess) => {
-    setMessageList([...messageList, newMess])
+    const handleAddMessage = (text) => {
+    setMessageList([...messageList, text])
     };
 
     const handleMessageClick = () => {
@@ -41,3 +42,5 @@ function App() {
 }
 
 export default App;
+
+
