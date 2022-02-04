@@ -7,11 +7,11 @@ import {useState, useEffect} from "react";
 function App() {
     const [messageList, setMessageList] = useState([
         {text:'Привет от автора', author: 'Резеда'},
-        {text:'Привет робота', author: 'Робот'}
+        {text:'Привет робота', author: 'Робот'},
+        {text:'Как дела', author: 'Резеда'}
     ])
 
     const handleAddMessage = (newMess) => {
-        // setMessageList((prevMessageList) => [...prevMessageList, text]);
     setMessageList([...messageList, newMess])
     };
 
@@ -19,9 +19,8 @@ function App() {
         console.log("Привет еще раз")
     }
 
-    useEffect((messageList) => {
-        // if(как вот здесь обратиться с автору со значением 'Резеда'... не знаю как правильно написать.., то что ниже не работает..)
-        if (messageList.author.length-1 === 'Резеда'){
+    useEffect(() => {
+        if ( messageList[messageList.length-1].author === 'Резеда'){
             const robotMessage = 'Сообщение от робота'
             console.log(robotMessage);
         }
