@@ -17,8 +17,6 @@ const Form = ({onSubmit}) => {
         }
         onSubmit(newMess);
         setValue({text: ''})
-
-
     };
 
     return (
