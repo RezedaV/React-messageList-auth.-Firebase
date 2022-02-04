@@ -13,7 +13,12 @@ function App() {
     ])
 
     const handleAddMessage = (text) => {
-    setMessageList([...messageList, text])
+        // приходит text, присваиваем себя как автора
+        const newMesg = {
+            text,
+            author:AUTHORS.ME
+        }
+    setMessageList([...messageList, newMesg])
     };
 
     const handleMessageClick = () => {
@@ -21,9 +26,12 @@ function App() {
     }
 
     useEffect(() => {
-        if ( messageList[messageList.length-1].author === 'Резеда'){
-            const robotMessage = 'Сообщение от робота'
-            console.log(robotMessage);
+        if ( messageList[messageList.length-1].author === AUTHORS.ME){
+            const newMesg = {
+                text: 'Робот пишет',
+                author:AUTHORS.BOT
+            }
+            setMessageList([...messageList, newMesg])
         }
     }, [messageList]);
 
