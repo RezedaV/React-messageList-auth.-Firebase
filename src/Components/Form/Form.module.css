@@ -1,0 +1,45 @@
+.myInput{
+    width: 500px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 20px;
+
+}
+
+.myBtn{
+    background: #837DFF;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+    border: 1px solid#837DFF;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+
+}
+
+.myForm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
