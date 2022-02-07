@@ -1,0 +1,14 @@
+
+.messageBlockChat{
+
+}
+
+.chat {
+    background: #292F3F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
