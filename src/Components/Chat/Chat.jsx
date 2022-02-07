@@ -49,7 +49,7 @@ function Chat() {
     }, [messageList]);
 
     if (!messageList[chatId]) {
-        return <Navigate to="/" replace />;
+        return <Navigate to='/chats' replace />
     }
 
 
