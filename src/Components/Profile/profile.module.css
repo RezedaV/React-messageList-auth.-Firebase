@@ -1,0 +1,13 @@
+.profileBlock{
+    margin: 30px 70px;
+    display: flex;
+}
+
+.profileAva h1{
+    margin-top: 50px;
+    color: #44d712;
+}
+
+.profileStatus h3{
+    margin-left: 100px;
+}

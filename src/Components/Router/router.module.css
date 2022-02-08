@@ -1,0 +1,16 @@
+.routerNav{
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    padding: 20px 20px;
+}
+
+.navLinkRout{
+    text-decoration: none;
+    padding: 20px;
+}

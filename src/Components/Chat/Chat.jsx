@@ -2,7 +2,6 @@ import s from './chat.module.css'
 import Form  from "../Form/Form";
 import React, {useState, useEffect, useRef} from "react";
 import {AUTHORS} from "../../UTILS/constants";
-
 import MessageList from "../MessageList/MessageList";
 import ChatList from "../ChatList/ChatList";
 import {useParams, useNavigate, Navigate} from "react-router-dom";
@@ -51,16 +50,16 @@ function Chat() {
     if (!messageList[chatId]) {
         return <Navigate to='/chats' replace />
     }
-    const removeChat = (chat) => {
-        setMessageList(messageList[chatId].filter(m => m.id !== chat.id))
-
-    }
+    // const removeChat = (chat) => {
+    //     setMessageList(messageList[chatId].filter(m => m.id !== chat.id))
+    //
+    // }
 
 
 
     return (
-        <div className="s.chat" >
-            <ChatList remove={removeChat}/>
+        <div className={s.chat} >
+            {/*<ChatList/>*/}
             <div className="s.messageBlockChat">
                 <MessageList
                     messages={messageList[chatId]}/>
