@@ -1,6 +1,6 @@
 import s from './chat.module.css'
 import Form  from "../Form/Form";
-import {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {AUTHORS} from "../../UTILS/constants";
 
 import MessageList from "../MessageList/MessageList";
@@ -13,7 +13,7 @@ function Chat() {
     const { chatId } = params;
     const navigate = useNavigate();
 
-    
+
     const [messageList, setMessageList] = useState({
             chat1:[{text:'Привет! Как дела?', author: AUTHORS.ME, id:1}],
             chat2:[{text:'Это бот,и это чат 2', author: AUTHORS.BOT, id: 2}],
@@ -51,13 +51,19 @@ function Chat() {
     if (!messageList[chatId]) {
         return <Navigate to='/chats' replace />
     }
+    const removeChat = (chat) => {
+        setMessageList(messageList[chatId].filter(m => m.id !== chat.id))
+
+    }
+
 
 
     return (
         <div className="s.chat" >
-            {/*<ChatList/>*/}
+            <ChatList remove={removeChat}/>
             <div className="s.messageBlockChat">
-                <MessageList messages={messageList[chatId]}/>
+                <MessageList
+                    messages={messageList[chatId]}/>
                 <div ref={messagesEnd} />
             </div>
             <Form onSubmit={handleAddMessage}/>

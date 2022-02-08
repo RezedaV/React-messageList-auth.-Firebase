@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Link, Route, Routes, NavLink} from "react-router-dom";
 import Chat from "../Chat/Chat";
 import ChatList from "../ChatList/ChatList";
+import Profile from "../Profile/Profile";
 
 const Home = () => <h2>Будущая страница профиля</h2>
 
@@ -26,7 +27,7 @@ const Router = () => {
                 </NavLink>
             </div>
             <Routes>
-                <Route path='/' element={<Home />}/>
+                <Route path='/' element={<Profile/>}/>
                 <Route path='chats' element={<ChatList/>}>
                     <Route path=':chatId' element={<Chat/>}/>
                 </Route>

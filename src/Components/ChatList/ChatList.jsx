@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './ChatList.module.css'
-import {Link, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet} from "react-router-dom";
 
-const ChatList = () => {
+const ChatList = ({chat, remove, removeChat}) => {
 const chats = [
     { name: "Чат 1", id: "chat1" },
     { name: "Чат 2", id: "chat2" },
@@ -15,7 +15,13 @@ const chats = [
             <ul className={s.chats}>
                 {chats.map(chat => (
                     <li key={chat.id}>
-                        <Link to={`/chats/${chat.id}`}>{chat.name} </Link>
+                        <NavLink
+                            remove={removeChat}
+                            style={({ isActive }) => ({ color: isActive ? "pink" : "grey" })}
+                            to={`/chats/${chat.id}`}>
+                            {chat.name}
+                        </NavLink>
+                        <button onClick={() => remove(chats)}>удалить чат</button>
                     </li>
                 ))}
             </ul>
