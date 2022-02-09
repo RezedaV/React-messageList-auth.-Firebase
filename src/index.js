@@ -7,7 +7,7 @@ import Router from "./Components/Router/Router";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

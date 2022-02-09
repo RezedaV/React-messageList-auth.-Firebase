@@ -1,8 +1,19 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import s from './profile.module.css'
+import {useDispatch, useSelector} from "react-redux";
+import {changeShowName} from "../../store/profile/actions";
+
 
 const Profile = () => {
+    const dispatch = useDispatch()
+    const data = useSelector((state) => state)
+    console.log (data)
+
+    const handleChangeShowName = () => {
+        dispatch(changeShowName)
+    }
+
     return (
         <div className={s.profileBlock}>
             <div className={s.profileAva}>
@@ -13,6 +24,11 @@ const Profile = () => {
                 <h3>
                     О себе: Всем привет! Я пес Бублик
                 </h3>
+                <div style={{margin:'50px'}}>
+                    <input onClick={handleChangeShowName} type="checkbox"/>
+                    <h4>Нажми на чекбокс</h4>
+                    {data.showName && <span>{data.name}</span>}
+                </div>
             </div>
 
         </div>
