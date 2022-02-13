@@ -1,14 +1,17 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import s from './profile.module.css'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector, shallowEqual} from "react-redux";
 import {changeShowName} from "../../store/profile/actions";
+import {selectName, selectShowName} from "../../store/profile/selectors";
 
 
 const Profile = () => {
     const dispatch = useDispatch()
-    const data = useSelector((state) => state)
-    console.log (data)
+    // const data = useSelector((state) => state)
+    // shallowEqual отвечает за сравнение предыдущего значения и текущего значения, чтобы понять менять или нет
+    const showName = useSelector(selectShowName, shallowEqual);
+    const name = useSelector(selectName);
 
     const handleChangeShowName = () => {
         dispatch(changeShowName)
@@ -27,7 +30,7 @@ const Profile = () => {
                 <div style={{margin:'50px'}}>
                     <input onClick={handleChangeShowName} type="checkbox"/>
                     <h4>Нажми на чекбокс</h4>
-                    {data.showName && <span>{data.name}</span>}
+                    {showName && <span>{name}</span>}
                 </div>
             </div>
 
