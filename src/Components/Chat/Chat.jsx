@@ -3,14 +3,18 @@ import Form  from "../Form/Form";
 import React, {useState, useEffect, useRef} from "react";
 import {AUTHORS} from "../../UTILS/constants";
 import MessageList from "../MessageList/MessageList";
-import ChatList from "../ChatList/ChatList";
-import {useParams, useNavigate, Navigate} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {selectMessages} from "../../store/messenges/selectors";
+import {addMessage, addMessageWithThunk} from "../../store/messenges/actions";
 
 
-function Chat({messages, addMessage}) {
+function Chat() {
     const params = useParams();
     const { chatId } = params;
-    const navigate = useNavigate();
+
+    const messages = useSelector(selectMessages);
+    const dispatch = useDispatch();
 
     //сделано чтобы при наполнении сообщениями, были видны сообщения которые отправлены только что,
     //короче чтобы моталось вниз messagesEnd
@@ -22,7 +26,7 @@ function Chat({messages, addMessage}) {
             author,
             id: `msg-${Date.now()}`,
         };
-        addMessage(chatId, newMsg);
+        dispatch(addMessageWithThunk(chatId, newMsg));
     };
 
     const handleAddMessage = (text) => {
@@ -33,10 +37,7 @@ function Chat({messages, addMessage}) {
 
     useEffect(() => {
         messagesEnd.current?.scrollIntoView();
-        if ( messages[chatId][messages[chatId].length-1]?.author === AUTHORS.ME) {
-            sendMessage('Робот пишет', AUTHORS.BOT)
-        }
-    }, [messages]);
+        }, [messages]);
 
     if (!messages[chatId]) {
         return <Navigate to='/chats' replace />
@@ -45,7 +46,6 @@ function Chat({messages, addMessage}) {
 
     return (
         <div className={s.chat} >
-            {/*<ChatList/>*/}
             <div className="s.messageBlockChat">
                 <MessageList
                     messages={messages[chatId]}/>

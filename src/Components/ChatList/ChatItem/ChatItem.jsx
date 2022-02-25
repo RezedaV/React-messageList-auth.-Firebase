@@ -5,7 +5,7 @@ import DeleteButton from "./DeleteButton";
 
 const ChatItem = ({chat, onDeleteChat}) => {
     return (
-        <div>
+        <div className={s.chatItem}>
             <NavLink
                 style={({ isActive }) => ({ color: isActive ? "#44d712" : "white" })}
                 className={s.navChat}

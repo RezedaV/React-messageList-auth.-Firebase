@@ -1,16 +1,15 @@
 import React, {useCallback} from 'react';
+import {useDispatch} from "react-redux";
+import {deleteChat} from "../../../store/chats/actions";
+import s from "../ChatList.module.css";
 
-const DeleteButton = ({id, onClick}) => {
-    const handleClick = useCallback(() => {
-        onClick(id)
-    }, [onClick, id])
-
+const DeleteButton = ({id}) => {
+    const dispatch = useDispatch();
+    const handleDeleteChat = () => {
+        dispatch(deleteChat(id));
+    };
     return (
-        <button
-            onClick={handleClick}
-        >
-            X
-        </button>
+        <div className={s.deleteButton} onClick={handleDeleteChat}>X</div>
     );
 };
 
