@@ -13,7 +13,7 @@ const MessageList = ({messages, text, author}) => {
     }
 
     const handleEdit = (id) => {
-        dispatch(editMessage(chatId, id, 'изменено'))
+        dispatch(editMessage(chatId, id, 'изменено.'))
     }
 
     return messages.map( (message) => (
