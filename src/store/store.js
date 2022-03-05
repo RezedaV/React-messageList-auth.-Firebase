@@ -6,11 +6,13 @@ import storage from "redux-persist/lib/storage";
 import {profileReducer} from "./profile/reduser";
 import {chatsReducer} from "./chats/reduser";
 import {messagesReducer} from "./messenges/reduser";
+import {articlesReducer} from "./articles/reduser";
 
 const rootReducer = combineReducers({
     profile: profileReducer,
     chats: chatsReducer,
     messages:messagesReducer,
+    articles: articlesReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

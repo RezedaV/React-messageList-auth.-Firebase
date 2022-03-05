@@ -4,6 +4,7 @@ import s from './profile.module.css'
 import {useDispatch, useSelector, shallowEqual} from "react-redux";
 import {changeShowName} from "../../store/profile/actions";
 import {selectName, selectShowName} from "../../store/profile/selectors";
+import {logOut} from "../../servises/firebase";
 
 
 const Profile = () => {
@@ -17,11 +18,26 @@ const Profile = () => {
         dispatch(changeShowName)
     }
 
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+        }catch (e){
+            console.warn(e);
+        }
+    }
+
+
     return (
         <div className={s.profileBlock}>
             <div className={s.profileAva}>
                 <Avatar alt="Remy Sharp" sx={{ width: 100, height: 100 }} src="https://c.wallhere.com/photos/2e/8e/dog_animals_Jack_Russell_Terrier-148696.jpg!d" />
                 <h1>Бублик</h1>
+                <button
+                    onClick={handleLogOut}
+                    className={s.myBtn}
+                >
+                    LOGOUT
+                </button>
             </div>
             <div className={s.profileStatus}>
                 <h3>
@@ -32,6 +48,8 @@ const Profile = () => {
                     <h4>Нажми на чекбокс</h4>
                     {showName && <span>{name}</span>}
                 </div>
+
+
             </div>
 
         </div>
