@@ -10,18 +10,12 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Home from "../Home/Home";
 import {onAuthStateChanged} from 'firebase/auth'
 import {auth} from "../../servises/firebase";
+import Photos from "../Photos/Photos";
 
 // const Home = () => <h2>Home page</h2>
 
 const Router = () => {
     const [authed, setAuthed] = useState(false);
-
-    const authorize = () => {
-        setAuthed(true)
-    }
-    const unAuthorize = () => {
-        setAuthed(false)
-    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -71,6 +65,15 @@ const Router = () => {
                         Articles
                     </NavLink>
                 </div>
+                <div>
+                    <NavLink
+                        to="/photos"
+                        className={s.navLinkRout}
+                        style={({ isActive }) => ({ color: isActive ? "#44d712" : "white"})}
+                    >
+                        Photos
+                    </NavLink>
+                </div>
             </div>
 
             <Routes>
@@ -79,11 +82,12 @@ const Router = () => {
                     <Route path='/signup' element={<Home isSignUp />}/>
                 </Route>
                 <Route path='/profile' element={<PrivateRoute authed={authed}/>}>
-                    <Route path='' element={<Profile onLogOut={unAuthorize}/>}/>
+                    <Route path='' element={<Profile/>}/>
                 </Route>
 
 
                 <Route path='/articles' element={<Articles/>}/>
+                <Route path='/photos' element={<Photos/>}/>
                 <Route path='chats' element={<ChatList/>}>
                     <Route path=':chatId' element={<Chat/>}/>
                 </Route>

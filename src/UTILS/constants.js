@@ -11,3 +11,5 @@ export const FETCH_STATUSES = {
     SUCCESS: 2,
     FAILURE: 3,
 }
+
+export const apiUrlPhotos = "https://jsonplaceholder.typicode.com/photos?_limit=10";
