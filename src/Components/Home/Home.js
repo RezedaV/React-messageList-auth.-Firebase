@@ -3,6 +3,7 @@ import s from './Home.module.css'
 import { Link } from "react-router-dom";
 import {logIn, signUp} from "../../servises/firebase";
 
+
 const Home = ({isSignUp}) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -48,8 +49,9 @@ const Home = ({isSignUp}) => {
     return (
         <>
             <div className={s.home}>
-                <h2  className={s.name}>{isSignUp ? 'Зарегистрироваться' : 'Войти'}</h2>
-
+                <h2  className={s.name}>
+                    {isSignUp ? 'Зарегистрироваться' : 'Войти'}
+                </h2>
                 <Link
                     className={s.link}
                     to={`${isSignUp ? '/' : '/signup'}`}

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Link, Route, Routes, NavLink} from "react-router-dom";
 import Chat from "../Chat/Chat";
 import ChatList from "../ChatList/ChatList";
 import Profile from "../Profile/Profile";
@@ -11,11 +10,19 @@ import Home from "../Home/Home";
 import {onAuthStateChanged} from 'firebase/auth'
 import {auth} from "../../servises/firebase";
 import Photos from "../Photos/Photos";
+import {BrowserRouter, NavLink, Route, Routes,} from "react-router-dom";
 
 // const Home = () => <h2>Home page</h2>
 
 const Router = () => {
     const [authed, setAuthed] = useState(false);
+
+    const authorize = () => {
+        setAuthed(true);
+    };
+    const unauthorize = () => {
+        setAuthed(false);
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -77,14 +84,15 @@ const Router = () => {
             </div>
 
             <Routes>
-                <Route path='' element={<PublicRoute authed={authed}/>}>
-                    <Route path='/' element={<Home/>}/>
+                <Route path='/' element={<PublicRoute authed={authed}/>}>
+                    <Route path='' element={<Home />}/>
                     <Route path='/signup' element={<Home isSignUp />}/>
                 </Route>
                 <Route path='/profile' element={<PrivateRoute authed={authed}/>}>
-                    <Route path='' element={<Profile/>}/>
+                    <Route
+                        path=''
+                        element={<Profile onLogout={unauthorize}/>}/>
                 </Route>
-
 
                 <Route path='/articles' element={<Articles/>}/>
                 <Route path='/photos' element={<Photos/>}/>
