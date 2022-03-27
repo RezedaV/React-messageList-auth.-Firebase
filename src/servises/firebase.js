@@ -4,6 +4,9 @@ import { getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut } from "firebase/auth";
+import {getDatabase, ref} from 'firebase/database'
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,3 +30,21 @@ export const signUp = (email, pass) =>
 export const logIn = (email, pass) =>
     signInWithEmailAndPassword(auth, email, pass);
 export const logOut = () => signOut(auth);
+
+
+export const db = getDatabase(app);
+export const profileRef = ref(db, 'profile')
+export const profileShowNameRef = ref(db, "profile/showName");
+export const profileNameRef =  ref(db, `profile/name`)
+export const getProfileNameRef = (userId) => ref(db, `profile/${userId}/name`)
+export const chatsRef = ref(db, 'chats');
+
+export const getChatsRefById = (chatId) => ref(db, `chats/${chatId}`);
+
+export const messagesRef = ref(db, 'messages');
+export const getMessageListRefByChatId = (chatId) =>
+    ref(db, `messages/${chatId}/messageList`);
+export const getMessagesRefByChatId = (chatId) =>
+    ref(db, `messages/${chatId}`);
+export const getMessageRefById = (chatId, msgId) =>
+    ref(db, `messages/${chatId}/messageList/${msgId}`);

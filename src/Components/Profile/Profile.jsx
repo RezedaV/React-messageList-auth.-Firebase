@@ -1,22 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import s from './profile.module.css'
 import {useDispatch, useSelector, shallowEqual} from "react-redux";
-import {changeShowName} from "../../store/profile/actions";
+import {changeName, changeShowName} from "../../store/profile/actions";
 import {selectName, selectShowName} from "../../store/profile/selectors";
-import {logOut} from "../../servises/firebase";
+import {getProfileNameRef, logOut, profileNameRef, profileRef, profileShowNameRef, auth} from "../../servises/firebase";
+import Form from "../Form/Form";
+import { onValue, set } from "@firebase/database";
 
 
 const Profile = () => {
     const dispatch = useDispatch()
     // const data = useSelector((state) => state)
     // shallowEqual отвечает за сравнение предыдущего значения и текущего значения, чтобы понять менять или нет
-    const showName = useSelector(selectShowName, shallowEqual);
-    const name = useSelector(selectName);
+
+    // const showName = useSelector(selectShowName, shallowEqual);
+
+    const [name, setName] = useState('');
+    const [showName, setShowName] = useState(true);
+    const name2 = useSelector(selectName);
+
 
     const handleChangeShowName = () => {
-        dispatch(changeShowName)
+        // dispatch(changeShowName)
+        set(profileShowNameRef(auth.currentUser.uid), !showName)
     }
+
+    const handleChangeName = (text) => {
+        // dispatch(changeName(text));
+        set(profileShowNameRef(auth.currentUser.uid), text)
+    };
+    useEffect(() => {
+        const unsubscribeName = onValue(profileNameRef, (snapshot) => {
+            setName(snapshot.val())
+        });
+        const unsubscribeShowName =onValue(profileShowNameRef, (snapshot) => {
+            setName(snapshot.val())
+        });
+        return () => {
+            unsubscribeName();
+            unsubscribeShowName();
+        }
+    },[] );
 
     const handleLogOut = async () => {
         try {
@@ -48,6 +73,7 @@ const Profile = () => {
                     <h4>Нажми на чекбокс</h4>
                     {showName && <span>{name}</span>}
                 </div>
+                <Form onSubmit={handleChangeName} />
 
 
             </div>
@@ -57,3 +83,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+

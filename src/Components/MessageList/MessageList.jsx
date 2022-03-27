@@ -4,12 +4,16 @@ import s from './MessageList.module.css'
 import {useParams} from "react-router-dom";
 import {deleteMessage, editMessage} from "../../store/messenges/actions";
 import {useDispatch} from "react-redux";
+import {getMessageRefById} from "../../servises/firebase";
+import {remove} from "@firebase/database";
+
 
 const MessageList = ({messages, text, author}) => {
     const {chatId} = useParams();
     const dispatch = useDispatch();
     const handleDelete = (id) => {
-        dispatch(deleteMessage(chatId, id))
+        // dispatch(deleteMessage(chatId, id))
+        remove(getMessageRefById(chatId, id))
     }
 
     const handleEdit = (id) => {
