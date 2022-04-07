@@ -1,0 +1,28 @@
+.profileBlock{
+    margin: 30px 70px;
+    display: flex;
+}
+
+.profileAva h1{
+    margin-top: 50px;
+    color: #44d712;
+}
+
+.profileStatus h3{
+    margin-left: 100px;
+}
+
+.myBtn{
+    background: #837DFF;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+    border: 1px solid#837DFF;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+
+}

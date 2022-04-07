@@ -1,0 +1,75 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.input{
+    width: 300px;
+    height: 40px;
+    background: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 1px;
+
+    color: black;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
+
+.myBtn{
+    background: #837DFF;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 20px;
+    border: 1px solid#837DFF;
+    cursor: pointer;
+    margin-top: 50px;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+.name{
+    color: #44d712;
+    font-family: Helvetica;
+    font-size: 34px;
+}
+.link{
+    color: white;
+    font-family: Helvetica;
+    font-size: 16px;
+}
+.link:hover{
+    color: #44d712;
+}
+
+
+.myForm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}

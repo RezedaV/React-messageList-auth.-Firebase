@@ -1,0 +1,35 @@
+.chatBlock{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.chats li{
+    list-style: none;
+
+}
+.chatItem{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.deleteButton{
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.deleteButton:hover{
+    color: red;
+}
+
+.navChat{
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
